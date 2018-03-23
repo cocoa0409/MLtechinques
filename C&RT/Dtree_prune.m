@@ -38,11 +38,9 @@ while size(find(r(:,1)~=0),1) > Max_leaves_number    %need pruning
         r1(new_node_index,1)=backprop(r1,train, routine);
         error_of_pruned_tree(i)=pruned_Dtree_predicate(r1,train);
     end
-    
     % pruning now!
     final_decision_index=find(error_of_pruned_tree==min(error_of_pruned_tree));
     final_branch_to_node=final_decision_index(1);
-    
     j=1;
     current_node=branch_to_leaves(final_branch_to_node);
     routine=current_node;
@@ -56,12 +54,10 @@ while size(find(r(:,1)~=0),1) > Max_leaves_number    %need pruning
      r(eli_index,:)=[];
      eli_index=find(r(:,4)==2*branch_to_leaves(final_branch_to_node)+1);
      r(eli_index,:)=[];
-        
      new_node_index=find(r(:,4)==branch_to_leaves(final_branch_to_node));
      r(new_node_index,2)=0;
      r(new_node_index,3)=0;
      r(new_node_index,1)=backprop(r,train, routine);
-     r
 end
 end
     
