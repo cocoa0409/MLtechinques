@@ -1,6 +1,5 @@
-function Error_rate=pruned_Dtree_predicate(r,test)
+function [Error_rate,test_predicate]=pruned_Dtree_predicate(r,test)
 N=length(test);
-test_predicate=zeros(N,1);
 for i=1:N,
     node_index=1;
     line_index=find(r(:,4)==node_index);
@@ -15,5 +14,6 @@ for i=1:N,
     end
     test_predicate(i)=r(line_index,1);
 end
+test_predicate=test_predicate';
 Error_rate=sum(abs(test_predicate-test(:,3)))/2/N;
     

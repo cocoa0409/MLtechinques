@@ -1,10 +1,12 @@
-function r=Dtree_prune(train ,Max_leaves_number)
+function r=Dtree_prune(r,train ,Max_leaves_number)
 %design to save Dtree in r
 %r1: label  r2: stump value  r3:index  r4:order of nodes
 %if it is leave, r2=0,r3=0;
 %If it is not leave, r1=0;
 
-r=Dtree(train,1);
+
+%r=Dtree(train,1);
+
 while size(find(r(:,1)~=0),1) > Max_leaves_number    %need pruning
     real_leaf=r(find(r(:,1)~=0),:);
     j=0;
